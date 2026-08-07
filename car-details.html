@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Details - AutoMart</title>
+  <!-- Font Awesome (add this in <head> if not already included) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/car-details.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+          <circle cx="7" cy="17" r="2"/>
+          <circle cx="17" cy="17" r="2"/>
+        </svg>
+      </div>
+      <span>Auto<span class="blue">Mart</span></span>
+    </div>
+
+    <nav class="nav-links">
+      <a class="active" href="index.html">Home</a>
+      <a href="#">Cars</a>
+      <a href="#">Post Car</a>
+    </nav>
+
+    <div class="auth">
+      <a class="login" href="#">Login</a>
+      <a class="signup" href="#">Sign Up</a>
+    </div>
+
+    <!-- TOGGLE -->
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="#">Cars</a>
+  <a href="#">Post Car</a>
+
+  <div class="menu-divider"></div>
+
+  <div class="mobile-auth">
+    <a class="login" href="#">Login</a>
+    <a class="signup" href="#">Sign Up</a>
+  </div>
+</div>
+
+  <!-- Car Details -->
+  <section class="car-details">
+    <div class="container narrow">
+      <a href="index.html" class="back-link">← Back to Cars</a>
+
+      <div class="car-layout">
+        <!-- Left column -->
+        <div class="car-main">
+          <div class="car-image-wrapper">
+            <img id="main-image" src="" alt="" class="main-image">
+
+            <div class="image-actions">
+              <button class="action-btn save-btn" title="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+              <button class="action-btn share-btn" title="Share">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="18" cy="5" r="3"/>
+                  <circle cx="6" cy="12" r="3"/>
+                  <circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="thumbnails" id="thumbnails"></div>
+
+          <div class="car-header">
+            <h1 id="car-title"></h1>
+            <span id="car-price" class="car-price"></span>
+          </div>
+
+          <p id="car-location" class="car-location"></p>
+
+          <div class="info-card description-card">
+            <h2>Description</h2>
+            <p id="car-description"></p>
+          </div>
+
+          <div class="info-card specs-card">
+            <h2>Specifications</h2>
+            <div class="specs-grid" id="specs-grid"></div>
+          </div>
+        </div>
+
+        <!-- Right sticky seller -->
+        <aside class="seller-sidebar">
+          <div class="seller-card">
+            <h3>Seller Information</h3>
+            <div class="seller-profile">
+              <div id="seller-avatar" class="seller-avatar"></div>
+              <div>
+                <p id="seller-name" class="seller-name"></p>
+                <p id="seller-member" class="seller-member"></p>
+              </div>
+            </div>
+            <p id="seller-email" class="seller-contact"></p>
+            <p id="seller-phone" class="seller-contact"></p>
+
+            <button class="contact-btn orange">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="14" rx="3" ry="3"/>
+                <path d="M8 12l4 4 4-4"/>
+              </svg>
+              Contact Seller
+            </button>
+            <a id="call-seller" class="contact-btn blues">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call Seller
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">×</span>
+      <h2>Contact Seller</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required autofocus>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone (optional)">
+        <textarea placeholder="Hi, I'm interested in this car..." required rows="5"></textarea>
+        <button type="submit" class="send-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+              <circle cx="7" cy="17" r="2"/>
+              <circle cx="17" cy="17" r="2"/>
+            </svg>
+            <span>Auto<span class="blue">Mart</span></span>
+          </div>
+          <p class="footer-tagline">
+            Your trusted marketplace for buying and selling quality vehicles. Find your perfect car with confidence.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Browse Cars</a></li>
+            <li><a href="#">Sell Your Car</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Safety Tips</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact Us</h4>
+          <ul class="contact-list">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <a href="mailto:support@automart.com">support@automart.com</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <a href="tel:+15551234567">+1 (555) 123-4567</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>123 Auto Drive, Car City, CA 90210</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p>© 2026 AutoMart. All rights reserved.</p>
+        <div class="bottom-links">
+          <a href="">Terms</a>
+          <a href="">Privacy</a>
+          <a href="">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+
+  <script type="module">
+    import { cars } from './js/cars.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const carId = parseInt(params.get('id'));
+    const car = cars.find(c => c.id === carId);
+
+    if (car) {
+      // Basic Info
+      document.getElementById('car-title').textContent = car.title;
+      document.getElementById('car-price').textContent = car.price;
+      document.getElementById('car-location').innerHTML = 
+        `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${car.location}`;
+      document.getElementById('car-description').textContent = car.description;
+
+      // Main Image
+      document.getElementById('main-image').src = car.images[0] || car.image;
+
+      // Thumbnails
+      const thumbs = document.getElementById('thumbnails');
+      thumbs.innerHTML = '';
+      (car.images || [car.image]).forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.onclick = () => document.getElementById('main-image').src = src;
+        thumbs.appendChild(img);
+      });
+
+      // Specifications - Using YOUR exact SVG structure
+      const specsGrid = document.getElementById('specs-grid');
+      specsGrid.innerHTML = '';
+
+      car.specs.forEach(spec => {
+        const item = document.createElement('div');
+        item.className = 'spec-badge';
+
+        let icon = '';
+        if (spec.label === "Make" || spec.label === "Model") {
+          icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
+        } else if (spec.label === "Year") {
+          icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`;
+        } else if (spec.label === "Mileage") {
+          icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`;
+        } else if (spec.label === "Transmission") {
+          icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
+        } else if (spec.label === "Fuel Type") {
+          icon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M6 3v6m0 4v8m4-18v6m0 4v8m4-18v6m0 4v8m4-18v6m0 4v8M4 9h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9z"/></svg>`;
+        }
+
+        item.innerHTML = `${icon} ${spec.label}<br><strong>${spec.value}</strong>`;
+        specsGrid.appendChild(item);
+      });
+
+      // Seller Info
+      document.getElementById('seller-avatar').style.backgroundImage = `url(${car.seller.avatar})`;
+      document.getElementById('seller-name').textContent = car.seller.name;
+      document.getElementById('seller-member').textContent = `Member since ${car.seller.memberSince}`;
+      document.getElementById('seller-email').innerHTML = 
+        `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> ${car.seller.email}`;
+      document.getElementById('seller-phone').innerHTML = 
+        `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> ${car.seller.phone}`;
+      document.getElementById('call-seller').href = `tel:${car.seller.phone}`;
+    } else {
+      document.getElementById('car-title').textContent = "Car Not Found";
+    }
+
+    // === Your Original Modal Logic (unchanged) ===
+    const modal = document.getElementById('contact-modal');
+    const contactBtn = document.querySelector('.contact-btn.orange');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    contactBtn.onclick = () => {
+      modal.style.display = 'flex';
+      document.body.classList.add('no-scroll');
+      document.querySelector('#contact-form input[autofocus]').focus();
+    };
+
+    closeModalBtn.onclick = () => {
+      modal.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+    };
+
+    window.onclick = e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+      }
+    };
+
+    document.getElementById('contact-form').onsubmit = e => {
+      e.preventDefault();
+      alert('Message sent!');
+      modal.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+    };
+  </script>
+</body>
+</html>

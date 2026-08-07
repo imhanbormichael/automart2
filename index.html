@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoMart</title>
+  <!-- Font Awesome (add this in <head> if not already included) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+          <circle cx="7" cy="17" r="2"/>
+          <circle cx="17" cy="17" r="2"/>
+        </svg>
+      </div>
+      <span>Auto<span class="blue">Mart</span></span>
+    </div>
+
+    <nav class="nav-links">
+      <a class="active" href="index.html">Home</a>
+      <a href="#">Cars</a>
+      <a href="#">Post Car</a>
+    </nav>
+
+    <div class="auth">
+      <a class="login" href="#">Login</a>
+      <a class="signup" href="#">Sign Up</a>
+    </div>
+
+    <!-- TOGGLE -->
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="#">Cars</a>
+  <a href="#">Post Car</a>
+
+  <div class="menu-divider"></div>
+
+  <div class="mobile-auth">
+    <a class="login" href="#">Login</a>
+    <a class="signup" href="#">Sign Up</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+
+    <h1>
+      Find Your Perfect Car 
+      <span>Today</span>
+    </h1>
+
+    <p>
+      Browse thousands of quality vehicles from verified sellers.
+      Buy with confidence or sell your car fast on AutoMart.
+    </p>
+
+    <!-- FILTER CARD -->
+    <div class="filter-card">
+
+      <div class="field">
+        <label>Make</label>
+        <select>
+          <option>Any Make</option>
+          <option>Toyota</option>
+          <option>Honda</option>
+          <option>BMW</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Min Price</label>
+        <input type="number" placeholder="0" />
+      </div>
+
+      <div class="field">
+        <label>Max Price</label>
+        <input type="number" placeholder="No limit" />
+      </div>
+
+      <button class="search-btn">
+        <!-- SEARCH SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        Browse Cars
+      </button>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+      <a class="primary" href="#">
+        Browse All Cars
+        <!-- RIGHT ARROW SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+
+      <a class="secondary" href="#">Sell Your Car</a>
+    </div>
+
+    <!-- BOUNCE ARROW -->
+    <div class="scroll-down">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Featured Cars Section -->
+<section class="featured-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="header-left">
+        <h2 class="section-title">Featured <span style="color: #3574fd;">Cars</span></h2>
+        <p class="section-subtitle">Hand-picked quality vehicles just for you</p>
+        </div>
+        <div class="header-right">
+        <a href="cars.html" class="view-all-link">
+          View All Cars
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="featured-grid">
+
+      <!-- Car 1 -->
+      <a href="car-details.html?id=1" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge used">Used</span>
+          <span class="price-badge">$78,500</span>
+          <img 
+            src="/assets/images/bmw.png" 
+            alt="2023 BMW M4 Competition" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2023 BMW M4 Competition</h3>
+          <div class="car-specs">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              2023
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                <circle cx="12" cy="13" r="8"/>
+                <path d="M12 9v4l3 3"/>
+              </svg>
+              8,500 mi
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                <path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/>
+              </svg>
+              Petrol
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Los Angeles
+            </span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+      <!-- Car 2 (repeat same structure, just change data) -->
+      <a href="car-details.html?id=2" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge new">New</span>
+          <span class="price-badge">$125,000</span>
+          <img 
+            src="/assets/images/mercedes.png" 
+            alt="2024 Mercedes-Benz S-Class" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2024 Mercedes-Benz S-Class</h3>
+          <div class="car-specs">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2024</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 3"/></svg> 150 mi</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/></svg> Hybrid</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Miami</span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+      <!-- Car 3 -->
+      <a href="car-details.html?id=3" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge used">Used</span>
+          <span class="price-badge">$135,000</span>
+          <img 
+            src="/assets/images/porsche.png" 
+            alt="2022 Porsche 911 Carrera S" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2022 Porsche 911 Carrera S</h3>
+          <div class="car-specs">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2022</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 3"/></svg> 12,000 mi</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/></svg> Petrol</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> New York</span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+      <!-- Car 4 -->
+      <a href="car-details.html?id=4" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge used">Used</span>
+          <span class="price-badge">$89,000</span>
+          <img 
+            src="/assets/images/tesla.png" 
+            alt="2023 Tesla Model S" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2023 Tesla Model S</h3>
+          <div class="car-specs">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2023</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 3"/></svg> 5,000 mi</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/></svg> Electric</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> San Francisco</span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+      <!-- Car 5 -->
+      <a href="car-details.html?id=5" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge new">New</span>
+          <span class="price-badge">$155,000</span>
+          <img 
+            src="/assets/images/audi.png" 
+            alt="2024 Audi RS e-tron" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2024 Audi RS e-tron</h3>
+          <div class="car-specs">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2024</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 3"/></svg> 500 mi</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/></svg> Electric</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Chicago</span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+      <!-- Car 6 -->
+      <a href="car-details.html?id=6" class="car-card">
+        <div class="car-image-container">
+          <span class="condition-badge used">Used</span>
+          <span class="price-badge">$45,000</span>
+          <img 
+            src="/assets/images/ford.png" 
+            alt="2021 Ford Mustang GT" 
+            class="car-image"
+          >
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">2021 Ford Mustang GT</h3>
+          <div class="car-specs">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2021</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 3"/></svg> 22,000 mi</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M3 7h18M3 17h18M7 3v4M17 3v4M7 17v4M17 17v4"/></svg> Petrol</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Houston</span>
+          </div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose AutoMart Section -->
+<section class="why-choose">
+  <div class="container">
+    <h2 class="why-title">Why Choose <span class="blue">AutoMart</span>?</h2>
+    <p class="why-subtitle">
+      We make buying and selling cars simple, safe, and hassle-free.
+    </p>
+
+    <div class="why-grid">
+      <!-- Card 1 - Secure Transactions -->
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Secure Transactions</h3>
+        <p class="why-card-text">
+          Every transaction is protected with our secure payment system and buyer protection guarantee.
+        </p>
+      </div>
+
+      <!-- Card 2 - Fast Listing -->
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l2-8z"/>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Fast Listing</h3>
+        <p class="why-card-text">
+          List your car in minutes with our streamlined posting process. Reach buyers instantly.
+        </p>
+      </div>
+
+      <!-- Card 3 - Verified Sellers -->
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <polyline points="17 11 19 13 23 9"/>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Verified Sellers</h3>
+        <p class="why-card-text">
+          All sellers are verified to ensure you're dealing with trustworthy individuals.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ready to Sell Section -->
+<section class="sell-cta">
+  <div class="container">
+    <h2 class="sell-title">Ready to Sell Your Car?</h2>
+    <p class="sell-subtitle">
+      List your vehicle in minutes and reach thousands of potential buyers. it's free and easy!
+    </p>
+
+    <a href="post-car.html" class="sell-btn">
+      Post Your Car Now
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Logo + Tagline + Socials (pulled left) -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+            <circle cx="7" cy="17" r="2"/>
+            <circle cx="17" cy="17" r="2"/>
+          </svg>
+          <span>Auto<span class="blue">Mart</span></span>
+        </div>
+
+        <p class="footer-tagline">
+          Your trusted marketplace for buying and selling quality vehicles. Find your perfect car with confidence.
+        </p>
+
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Browse Cars</a></li>
+          <li><a href="#">Sell Your Car</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Safety Tips</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <ul class="contact-list">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <a href="mailto:support@automart.com">support@automart.com</a>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>123 Auto Drive, Car City, CA 90210</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Horizontal Line -->
+    <div class="footer-divider"></div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>© 2026 AutoMart. All rights reserved.</p>
+      <div class="bottom-links">
+        <a href="">Terms</a>
+        <a href="">Privacy</a>
+        <a href="">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
