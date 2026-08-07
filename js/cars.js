@@ -45,7 +45,7 @@ export const cars = [
       { label: "Transmission", value: "Automatic" },
       { label: "Fuel Type", value: "Petrol" }
     ],
-    images: ["../assets/images/mercedes.png"],
+    images: ["assets/images/mercedes.png"],
     seller: {
       name: "Elena Rodriguez",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
@@ -70,7 +70,7 @@ export const cars = [
       { label: "Transmission", value: "Automatic" },
       { label: "Fuel Type", value: "Petrol" }
     ],
-    images: ["../assets/images/porsche.png"],
+    images: ["assets/images/porsche.png"],
     seller: {
       name: "Michael Chen",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
@@ -95,7 +95,7 @@ export const cars = [
       { label: "Transmission", value: "Automatic" },
       { label: "Fuel Type", value: "Electric" }
     ],
-    images: ["../assets/images/tesla.png"],
+    images: ["assets/images/tesla.png"],
     seller: {
       name: "Sarah Kim",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
@@ -120,7 +120,7 @@ export const cars = [
       { label: "Transmission", value: "Automatic" },
       { label: "Fuel Type", value: "Electric" }
     ],
-    images: ["../assets/images/audi.png"],
+    images: ["assets/images/audi.png"],
     seller: {
       name: "David Thompson",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
@@ -145,7 +145,7 @@ export const cars = [
       { label: "Transmission", value: "Automatic" },
       { label: "Fuel Type", value: "Petrol" }
     ],
-    images: ["../assets/images/ford.png"],
+    images: ["assets/images/ford.png"],
     seller: {
       name: "Robert Martinez",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
