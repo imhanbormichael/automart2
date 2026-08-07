@@ -5,7 +5,7 @@ export const cars = [
     title: "2023 BMW M4 Competition",
     price: "$78,500",
     location: "Los Angeles, CA",
-    image: "/assets/images/bmw.png",
+    image: "assets/images/bmw.png",
     condition: "Used",
     description: "Stunning BMW M4 Competition with carbon fiber package, M Sport exhaust, and premium Vernasca leather interior. One owner, garage kept, all service records available.",
     specs: [
@@ -17,9 +17,9 @@ export const cars = [
       { label: "Fuel Type", value: "Petrol" }
     ],
     images: [
-      "../assets/images/bmw.png",
-      "../assets/images/bmw2.png",
-      "../assets/images/bmw3.png"
+      "assets/images/bmw.png",
+      "assets/images/bmw2.png",
+      "assets/images/bmw3.png"
     ],
     seller: {
       name: "James Wilson",
@@ -34,7 +34,7 @@ export const cars = [
     title: "2024 Mercedes-AMG GT",
     price: "$125,000",
     location: "Miami, FL",
-    image: "../assets/images/mercedes.png",
+    image: "assets/images/mercedes.png",
     condition: "New",
     description: "Brand new Mercedes-Benz S-Class 580 with Executive Rear Seat Package. Burmester 4D surround sound, MBUX infotainment, and advanced driver assistance..",
     specs: [
@@ -59,7 +59,7 @@ export const cars = [
     title: "2022 Porsche 911 Carrera S",
     price: "$135,000",
     location: "New York, NY",
-    image: "../assets/images/porsche.png",
+    image: "assets/images/porsche.png",
     condition: "Used",
     description: "Immaculate Porsche 911 Carrera S with Sport Chrono Package, adaptive suspension, and premium leather interior. Meticulously maintained with low mileage.",
     specs: [
@@ -84,7 +84,7 @@ export const cars = [
     title: "2023 Tesla Model S Plaid",
     price: "$89,000",
     location: "San Francisco, CA",
-    image: "../assets/images/tesla.png",
+    image: "assets/images/tesla.png",
     condition: "Used",
     description: "Tesla Model S Plaid with Full Self-Driving capability. Yoke steering wheel, premium white interior, and glass roof. Supercharger access included.",
     specs: [
@@ -109,7 +109,7 @@ export const cars = [
     title: "2024 Audi RS e-tron GT",
     price: "$155,000",
     location: "Chicago, IL",
-    image: "../assets/images/audi.png",
+    image: "assets/images/audi.png",
     condition: "New",
     description: "All-electric Audi RS e-tron GT in Kemora Gray. Carbon ceramic brakes, Bang & Olufsen 3D sound, and Matrix LED headlights with laser light.",
     specs: [
@@ -134,7 +134,7 @@ export const cars = [
     title: "2021 Ford Mustang GT",
     price: "$45,000",
     location: "Houston, TX",
-    image: "../assets/images/ford.png",
+    image: "assets/images/ford.png",
     condition: "Used",
     description: "Classic American muscle. Ford Mustang GT with 5.0L V8, performance pack level 2, Recaro seats, and active valve exhaust system.",
     specs: [
