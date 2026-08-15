@@ -488,7 +488,7 @@ body {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex !important;
   }
 
   .filter-card {
