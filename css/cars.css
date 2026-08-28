@@ -304,3 +304,105 @@
     height: 200px;
   }
 }
+
+/* =========================================
+   MOBILE ONLY – Filters button + drawer
+   Screens wider than 900px are unchanged
+========================================= */
+
+.mobile-filter-btn {
+  display: none;
+}
+
+.close-filters-btn {
+  display: none;
+}
+
+.filters-overlay {
+  display: none;
+}
+
+.filters-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .mobile-filter-btn {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 24px;
+    padding: 13px 24px;
+    background: #fff;
+    border: 2px solid #2563eb;
+    border-radius: 999px;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .mobile-filter-btn svg {
+    stroke: #2563eb;
+  }
+
+  /* Hide the left column and turn it into a drawer */
+  .filters-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 85%;
+    max-width: 340px;
+    height: 100%;
+    z-index: 1100;
+    background: #fff;
+    transform: translateX(-105%);
+    transition: transform 0.35s ease;
+    overflow-y: auto;
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .filters-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .filters-card {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    min-height: 100%;
+    padding: 24px 20px;
+  }
+
+  .close-filters-btn {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #6b7280;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+  }
+
+  .filters-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1090;
+  }
+
+  .filters-overlay.active {
+    display: block;
+  }
+
+  .cars-layout {
+    grid-template-columns: 1fr;
+  }
+}

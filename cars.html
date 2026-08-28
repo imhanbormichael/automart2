@@ -65,10 +65,21 @@
 
   <!-- MAIN CONTENT -->
   <section class="cars-page">
-    <div class="container cars-layout">
+    <div class="container">
 
+        <!-- Mobile only -->
+        
+          <button class="mobile-filter-btn" id="open-filters" type="button" aria-label="Open filters">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+            Filters
+          </button>
+
+      <div class="cars-layout">
+        
       <!-- FILTERS SIDEBAR -->
-      <aside class="filters-sidebar">
+      <aside class="filters-sidebar" id="filters-sidebar">
         <div class="filters-card">
           <div class="filters-header">
             <h3>
@@ -77,7 +88,10 @@
               </svg>
               Filters
             </h3>
-            <button id="clear-filters" class="clear-btn">× Clear</button>
+            <div class="filters-header-actions">
+              <button id="clear-filters" class="clear-btn">× Clear</button>
+              <button id="close-filters" class="close-filters-btn" type="button" aria-label="Close filters">×</button>
+            </div>
           </div>
 
           <!-- Make -->
@@ -152,7 +166,8 @@
           <button id="clear-all-btn" class="clear-all-btn">Clear All Filters</button>
         </div>
       </div>
-
+      <div class="filters-overlay" id="filters-overlay"></div>
+      </div>
     </div>
   </section>
 

@@ -1,6 +1,5 @@
 import { cars } from './cars.js';
 
-// DOM elements
 const carsGrid = document.getElementById('cars-grid');
 const vehicleCount = document.getElementById('vehicle-count');
 const noResults = document.getElementById('no-results');
@@ -15,12 +14,10 @@ const filterFuel = document.getElementById('filter-fuel');
 const clearFiltersBtn = document.getElementById('clear-filters');
 const clearAllBtn = document.getElementById('clear-all-btn');
 
-// Helper: get numeric price from string like "$78,500"
 function getPrice(priceStr) {
   return parseInt(priceStr.replace(/[^0-9]/g, '')) || 0;
 }
 
-// Main filter function
 function filterCars() {
   const make = filterMake.value;
   const year = filterYear.value;
@@ -49,7 +46,6 @@ function filterCars() {
   updateActiveFilters();
 }
 
-// Render car cards
 function renderCars(list) {
   vehicleCount.textContent = `${list.length} vehicle${list.length !== 1 ? 's' : ''} available`;
 
@@ -65,7 +61,7 @@ function renderCars(list) {
     const year = car.specs.find(s => s.label === "Year")?.value || "";
     const mileage = car.specs.find(s => s.label === "Mileage")?.value || "";
     const fuel = car.specs.find(s => s.label === "Fuel Type")?.value || "";
-    const location = car.location.split(',')[0]; // just city
+    const location = car.location.split(',')[0];
 
     return `
       <a href="car-details.html?id=${car.id}" class="car-card">
@@ -114,7 +110,6 @@ function renderCars(list) {
   }).join('');
 }
 
-// Show active filter chips
 function updateActiveFilters() {
   const chips = [];
 
@@ -132,7 +127,6 @@ function updateActiveFilters() {
     </span>
   `).join('');
 
-  // Remove individual chips
   activeFiltersContainer.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.dataset.key;
@@ -147,7 +141,6 @@ function updateActiveFilters() {
   });
 }
 
-// Clear all filters
 function clearAllFilters() {
   filterMake.value = '';
   filterYear.value = '';
@@ -158,16 +151,44 @@ function clearAllFilters() {
   filterCars();
 }
 
-// Event listeners
 [filterMake, filterYear, filterTransmission, filterFuel].forEach(el => {
-  el.addEventListener('change', filterCars);
+  if (el) el.addEventListener('change', filterCars);
 });
 
-filterMinPrice.addEventListener('input', filterCars);
-filterMaxPrice.addEventListener('input', filterCars);
+if (filterMinPrice) filterMinPrice.addEventListener('input', filterCars);
+if (filterMaxPrice) filterMaxPrice.addEventListener('input', filterCars);
+if (clearFiltersBtn) clearFiltersBtn.addEventListener('click', clearAllFilters);
+if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllFilters);
 
-clearFiltersBtn.addEventListener('click', clearAllFilters);
-clearAllBtn.addEventListener('click', clearAllFilters);
-
-// Initial load
 filterCars();
+
+const openFiltersBtn = document.getElementById("open-filters");
+const closeFiltersBtn = document.getElementById("close-filters");
+const filtersSidebar = document.getElementById("filters-sidebar");
+const filtersOverlay = document.getElementById("filters-overlay");
+
+function openMobileFilters() {
+  if (!filtersSidebar) return;
+  filtersSidebar.classList.add("open");
+  if (filtersOverlay) filtersOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMobileFilters() {
+  if (!filtersSidebar) return;
+  filtersSidebar.classList.remove("open");
+  if (filtersOverlay) filtersOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+if (openFiltersBtn) {
+  openFiltersBtn.addEventListener("click", openMobileFilters);
+}
+
+if (closeFiltersBtn) {
+  closeFiltersBtn.addEventListener("click", closeMobileFilters);
+}
+
+if (filtersOverlay) {
+  filtersOverlay.addEventListener("click", closeMobileFilters);
+}
