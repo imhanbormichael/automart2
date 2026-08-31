@@ -260,6 +260,18 @@
   background: #1d4ed8;
 }
 
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: #ea580c;
+  color: #fff;
+}
+
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
 /* =========================
    RESPONSIVE
 ========================= */

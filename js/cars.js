@@ -155,3 +155,8 @@ export const cars = [
     }
   }
 ];
+
+export function getAllCars() {
+  const posted = JSON.parse(localStorage.getItem('postedCars') || '[]');
+  return [...posted, ...cars];
+}

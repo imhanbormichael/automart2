@@ -1,4 +1,4 @@
-import { cars } from './cars.js';
+import { getAllCars } from './cars.js';
 
 const carsGrid = document.getElementById('cars-grid');
 const vehicleCount = document.getElementById('vehicle-count');
@@ -26,7 +26,8 @@ function filterCars() {
   const transmission = filterTransmission.value;
   const fuel = filterFuel.value;
 
-  const filtered = cars.filter(car => {
+  const allCars = getAllCars();
+  const filtered = allCars.filter(car => {
     const carPrice = getPrice(car.price);
     const carYear = car.specs.find(s => s.label === "Year")?.value || "";
     const carTransmission = car.specs.find(s => s.label === "Transmission")?.value || "";

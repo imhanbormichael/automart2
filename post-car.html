@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Car - AutoMart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/post-car.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+            <circle cx="7" cy="17" r="2"/>
+            <circle cx="17" cy="17" r="2"/>
+          </svg>
+        </div>
+        <span>Auto<span class="blue">Mart</span></span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cars.html">Cars</a>
+        <a class="active" href="post-car.html">Post Car</a>
+      </nav>
+
+      <div class="auth">
+        <a class="login" href="#">Login</a>
+        <a class="signup" href="#">Sign Up</a>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">Cars</a>
+    <a href="post-car.html">Post Car</a>
+    <div class="menu-divider"></div>
+    <div class="mobile-auth">
+      <a class="login" href="#">Login</a>
+      <a class="signup" href="#">Sign Up</a>
+    </div>
+  </div>
+
+  <main class="post-page">
+    <div class="container">
+      <a href="cars.html" class="back-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+        </svg>
+        Back to Cars
+      </a>
+
+      <h1 class="post-title">Post Your <span>Car</span></h1>
+      <p class="post-subtitle">Fill in the details below to list your car for sale</p>
+
+      <form id="post-car-form" class="post-card" novalidate>
+        <div class="form-group">
+          <label>Photos</label>
+          <div class="photo-row">
+            <label class="photo-box" for="car-photos">
+              <input type="file" id="car-photos" accept="image/*" multiple hidden>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="m21 15-5-5L5 21"/>
+                <path d="M16 3v4M14 5h4"/>
+              </svg>
+              <span>Add Photo</span>
+            </label>
+            <div id="photo-preview" class="photo-preview"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="car-title">Title</label>
+          <input type="text" id="car-title" placeholder="e.g., 2023 BMW M4 Competition" required>
+        </div>
+
+        <div class="form-group">
+          <label for="car-description">Description</label>
+          <textarea id="car-description" rows="4" placeholder="Describe your car in detail..." required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="car-price">Price ($)</label>
+            <input type="number" id="car-price" placeholder="50000" min="1" required>
+          </div>
+          <div class="form-group">
+            <label for="car-year">Year</label>
+            <select id="car-year" required>
+              <option value="" disabled selected hidden>Select year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="car-make">Make</label>
+            <select id="car-make" required>
+                <option value="" disabled selected hidden>Select make</option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Ford">Ford</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Jaguar">Jaguar</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Mercedes">Mercedes-Benz</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Volkswagen">Volkswagen</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="car-model">Model</label>
+            <input type="text" id="car-model" placeholder="e.g., M4" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="car-mileage">Mileage</label>
+            <input type="number" id="car-mileage" placeholder="12000" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="car-transmission">Transmission</label>
+            <select id="car-transmission" required>
+              <option value="" disabled selected hidden>Select transmission</option>
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="car-fuel">Fuel Type</label>
+            <select id="car-fuel" required>
+              <option value="" disabled selected hidden>Select fuel type</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="car-location">Location</label>
+            <input type="text" id="car-location" placeholder="e.g., Los Angeles, CA" required>
+          </div>
+        </div>
+
+        <button type="submit" class="post-submit-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 19V5"/><path d="m5 12 7-7 7 7"/>
+          </svg>
+          Post Car Listing
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2.2 10.8A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+              <circle cx="7" cy="17" r="2"/>
+              <circle cx="17" cy="17" r="2"/>
+            </svg>
+            <span>Auto<span class="blue">Mart</span></span>
+          </div>
+          <p class="footer-tagline">Your trusted marketplace for buying and selling quality vehicles. Find your perfect car with confidence.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="cars.html">Browse Cars</a></li>
+            <li><a href="post-car.html">Sell Your Car</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><a href="mailto:support@automart.com">support@automart.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>©️ 2026 AutoMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script type="module" src="js/post-car.js"></script>
+</body>
+</html>

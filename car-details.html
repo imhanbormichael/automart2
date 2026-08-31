@@ -243,11 +243,11 @@
   <script src="./js/main.js"></script>
 
   <script type="module">
-    import { cars } from './js/cars.js';
+    import { getAllCars } from './js/cars.js';
 
     const params = new URLSearchParams(window.location.search);
     const carId = parseInt(params.get('id'));
-    const car = cars.find(c => c.id === carId);
+    const car = getAllCars().find(c => c.id === carId);
 
     if (car) {
       // Basic Info
