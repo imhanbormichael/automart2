@@ -75,55 +75,61 @@
 
     <!-- FILTER CARD -->
     <div class="filter-card">
+  <div class="field">
+    <label>Make</label>
+    <select id="home-make">
+      <option value="">Any Make</option>
+      <option value="Audi">Audi</option>
+      <option value="BMW">BMW</option>
+      <option value="Chevrolet">Chevrolet</option>
+      <option value="Ford">Ford</option>
+      <option value="Honda">Honda</option>
+      <option value="Hyundai">Hyundai</option>
+      <option value="Jaguar">Jaguar</option>
+      <option value="Lexus">Lexus</option>
+      <option value="Mercedes">Mercedes-Benz</option>
+      <option value="Nissan">Nissan</option>
+      <option value="Porsche">Porsche</option>
+      <option value="Tesla">Tesla</option>
+      <option value="Toyota">Toyota</option>
+      <option value="Volkswagen">Volkswagen</option>
+    </select>
+  </div>
 
-      <div class="field">
-        <label>Make</label>
-        <select>
-          <option>Any Make</option>
-          <option>Toyota</option>
-          <option>Honda</option>
-          <option>BMW</option>
-        </select>
-      </div>
+  <div class="field">
+    <label>Min Price</label>
+    <input id="home-min-price" type="number" placeholder="$0" min="0" />
+  </div>
 
-      <div class="field">
-        <label>Min Price</label>
-        <input type="number" placeholder="0" />
-      </div>
+  <div class="field">
+    <label>Max Price</label>
+    <input id="home-max-price" type="number" placeholder="No limit" min="0" />
+  </div>
 
-      <div class="field">
-        <label>Max Price</label>
-        <input type="number" placeholder="No limit" />
-      </div>
+  <button class="search-btn" id="home-search-btn" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </svg>
+    Browse Cars
+  </button>
+</div>
 
-      <button class="search-btn">
-        <!-- SEARCH SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.3-4.3"></path>
-        </svg>
-        Browse Cars
-      </button>
+<div class="actions">
+  <a class="primary" href="cars.html">
+    Browse All Cars
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"></path>
+      <path d="m12 5 7 7-7 7"></path>
+    </svg>
+  </a>
 
-    </div>
-
-    <!-- ACTION BUTTONS -->
-    <div class="actions">
-      <a class="primary" href="#">
-        Browse All Cars
-        <!-- RIGHT ARROW SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </a>
-
-      <a class="secondary" href="#">Sell Your Car</a>
-    </div>
+  <a class="secondary" href="post-car.html">Sell Your Car</a>
+</div>
 
     <!-- BOUNCE ARROW -->
     <div class="scroll-down">
@@ -491,5 +497,25 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const searchBtn = document.getElementById('home-search-btn');
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      const make = document.getElementById('home-make').value;
+      const min = document.getElementById('home-min-price').value;
+      const max = document.getElementById('home-max-price').value;
+
+      const params = new URLSearchParams();
+      if (make) params.set('make', make);
+      if (min) params.set('min', min);
+      if (max) params.set('max', max);
+
+      const query = params.toString();
+      window.location.href = query ? `cars.html?${query}` : 'cars.html';
+    });
+  }
+</script>
 </body>
 </html>

@@ -18,6 +18,18 @@ function getPrice(priceStr) {
   return parseInt(priceStr.replace(/[^0-9]/g, '')) || 0;
 }
 
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get('make') && filterMake) {
+  filterMake.value = urlParams.get('make');
+}
+if (urlParams.get('min') && filterMinPrice) {
+  filterMinPrice.value = urlParams.get('min');
+}
+if (urlParams.get('max') && filterMaxPrice) {
+  filterMaxPrice.value = urlParams.get('max');
+}
+
 function filterCars() {
   const make = filterMake.value;
   const year = filterYear.value;
