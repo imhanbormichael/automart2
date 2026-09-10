@@ -4,6 +4,30 @@ const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const tabs = document.querySelectorAll('.auth-tab');
 
+function getFormValues(form) {
+  const inputs = [...form.querySelectorAll('input')].filter((i) =>
+    ['text', 'email', 'password'].includes(i.type)
+  );
+
+  const emailInput =
+    inputs.find((i) => i.type === 'email' || (i.value && i.value.includes('@'))) ||
+    inputs.find((i) => i.type === 'text' && i !== inputs[0]) ||
+    inputs[1];
+
+  const passwordInput =
+    inputs.find((i) => i.type === 'password') ||
+    inputs[inputs.length - 1];
+
+  const nameInput = inputs.find((i) => i !== emailInput && i !== passwordInput);
+
+  return {
+    name: nameInput?.value.trim() || '',
+    email: emailInput?.value.trim() || '',
+    password: passwordInput?.value || '',
+    confirm: inputs.filter((i) => i.type === 'password')[1]?.value || '',
+  };
+}
+
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     tabs.forEach((t) => t.classList.remove('active'));
@@ -30,11 +54,7 @@ document.querySelectorAll('.toggle-pass').forEach((btn) => {
 if (signupForm) {
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const name = signupForm.querySelector('[name="name"], #name')?.value?.trim();
-    const email = signupForm.querySelector('[name="email"], #signup-email')?.value?.trim();
-    const password = signupForm.querySelector('[name="password"], #signup-password')?.value;
-    const confirm = signupForm.querySelector('[name="confirm"], #confirm-password')?.value;
+    const { name, email, password, confirm } = getFormValues(signupForm);
 
     if (!name || !email || !password) {
       alert('Please fill all fields');
@@ -61,7 +81,6 @@ if (signupForm) {
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('currentUser', JSON.stringify(data.user));
-      alert('Account created');
       window.location.href = 'index.html';
     } catch (err) {
       alert('Backend is not running. Keep npm run start:dev open.');
@@ -72,9 +91,7 @@ if (signupForm) {
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const email = loginForm.querySelector('[name="email"], #email, #login-email')?.value?.trim();
-    const password = loginForm.querySelector('[name="password"], #password, #login-password')?.value;
+    const { email, password } = getFormValues(loginForm);
 
     if (!email || !password) {
       alert('Please fill all fields');

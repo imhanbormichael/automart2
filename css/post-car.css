@@ -189,3 +189,38 @@ select:focus {
     padding: 20px 16px;
   }
 }
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .nav-links,
+  .auth {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: flex !important;
+    flex-shrink: 0;
+  }
+
+  .nav-inner {
+    overflow: hidden;
+  }
+
+  .mobile-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .mobile-auth .user-chip,
+  .mobile-auth .logout {
+    width: 100%;
+    justify-content: center;
+  }
+}
