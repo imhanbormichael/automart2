@@ -4,6 +4,18 @@ const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const tabs = document.querySelectorAll('.auth-tab');
 
+function showTab(which) {
+  const showLogin = which === 'login';
+
+  tabs.forEach((t) => {
+    const name = (t.dataset.tab || t.textContent).toLowerCase().trim();
+    t.classList.toggle('active', name.includes(showLogin ? 'login' : 'sign'));
+  });
+
+  if (loginForm) loginForm.style.display = showLogin ? 'block' : 'none';
+  if (signupForm) signupForm.style.display = showLogin ? 'none' : 'block';
+}
+
 function getFormValues(form) {
   const inputs = [...form.querySelectorAll('input')].filter((i) =>
     ['text', 'email', 'password'].includes(i.type)
@@ -30,18 +42,12 @@ function getFormValues(form) {
 
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
-    tabs.forEach((t) => t.classList.remove('active'));
-    tab.classList.add('active');
-
-    if (tab.dataset.tab === 'login') {
-      if (loginForm) loginForm.style.display = 'block';
-      if (signupForm) signupForm.style.display = 'none';
-    } else {
-      if (loginForm) loginForm.style.display = 'none';
-      if (signupForm) signupForm.style.display = 'block';
-    }
+    const name = (tab.dataset.tab || tab.textContent).toLowerCase().trim();
+    showTab(name.includes('login') ? 'login' : 'signup');
   });
 });
+
+showTab('login');
 
 document.querySelectorAll('.toggle-pass').forEach((btn) => {
   btn.addEventListener('click', () => {
