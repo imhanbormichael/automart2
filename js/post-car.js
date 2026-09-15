@@ -1,3 +1,4 @@
+const API = 'http://localhost:3000';
 const form = document.getElementById('post-car-form');
 const photoInput = document.getElementById('car-photos');
 const preview = document.getElementById('photo-preview');
@@ -21,7 +22,7 @@ function showToast(message) {
 
 photoInput.addEventListener('change', () => {
   const files = Array.from(photoInput.files || []);
-  files.forEach(file => {
+  files.forEach((file) => {
     const reader = new FileReader();
     reader.onload = () => {
       uploadedImages.push(reader.result);
@@ -33,7 +34,7 @@ photoInput.addEventListener('change', () => {
   });
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const title = document.getElementById('car-title').value.trim();
@@ -57,40 +58,46 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const priceNumber = parseInt(price, 10);
-  const mileageNumber = parseInt(mileage, 10);
-  const formattedPrice = '$' + priceNumber.toLocaleString();
-  const formattedMileage = mileageNumber.toLocaleString() + ' mi';
+  let user = null;
+  try {
+    user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  } catch (err) {
+    user = null;
+  }
 
-  const newCar = {
-    id: Date.now(),
+  const payload = {
     title,
-    price: formattedPrice,
+    make,
+    model,
+    year: Number(year),
+    price: Number(price),
+    mileage: String(mileage),
+    fuel,
+    transmission,
+    condition: Number(mileage) < 1000 ? 'New' : 'Used',
     location,
-    image: uploadedImages[0],
-    condition: mileageNumber < 1000 ? 'New' : 'Used',
     description,
-    specs: [
-      { label: 'Make', value: make },
-      { label: 'Model', value: model },
-      { label: 'Year', value: year },
-      { label: 'Mileage', value: formattedMileage },
-      { label: 'Transmission', value: transmission },
-      { label: 'Fuel Type', value: fuel }
-    ],
-    images: uploadedImages,
-    seller: {
-      name: 'You',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150',
-      memberSince: '2026',
-      email: 'you@automart.com',
-      phone: '+1 555-0000'
-    }
+    image: uploadedImages[0],
+    sellerName: user?.name || 'You',
+    sellerPhone: user?.phone || '+1 555-0000',
+    sellerEmail: user?.email || 'you@automart.com',
   };
 
-  const posted = JSON.parse(localStorage.getItem('postedCars') || '[]');
-  posted.unshift(newCar);
-  localStorage.setItem('postedCars', JSON.stringify(posted));
+  try {
+    const res = await fetch(API + '/cars', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      showToast('Could not save car to database');
+      return;
+    }
+  } catch (err) {
+    showToast('Backend is not running');
+    return;
+  }
 
   window.location.href = 'cars.html';
 });

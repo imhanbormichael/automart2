@@ -1,35 +1,33 @@
-const toggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".mobile-menu");
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.mobile-menu');
 
 if (toggle && menu) {
-  toggle.addEventListener("click", (e) => {
+  toggle.addEventListener('click', (e) => {
     e.stopPropagation();
 
-    const isOpen = menu.classList.toggle("active");
-    toggle.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", isOpen);
-    document.body.classList.toggle("no-scroll", isOpen);
+    const isOpen = menu.classList.toggle('active');
+    toggle.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('no-scroll', isOpen);
   });
 
-  // Close when clicking outside
-  document.addEventListener("click", (e) => {
+  document.addEventListener('click', (e) => {
     if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-        toggle.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("no-scroll");
+      if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
       }
     }
   });
 
-  // Auto-close when clicking a link
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
-      toggle.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("no-scroll");
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('active');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('no-scroll');
     });
   });
 }
@@ -71,6 +69,29 @@ if (toggle && menu) {
       </div>
       <a href="#" class="logout">Logout</a>
     `;
+  }
+
+  const isListingsPage = window.location.pathname.includes('my-listings.html');
+
+  const nav = document.querySelector('.nav-links');
+  if (nav && !nav.querySelector('.listings-link')) {
+    const link = document.createElement('a');
+    link.href = 'my-listings.html';
+    link.textContent = 'My Listings';
+    link.className = 'listings-link';
+    if (isListingsPage) link.classList.add('active');
+    nav.appendChild(link);
+  }
+
+  if (menu && !menu.querySelector('.listings-link')) {
+    const link = document.createElement('a');
+    link.href = 'my-listings.html';
+    link.textContent = 'My Listings';
+    link.className = 'listings-link';
+    if (isListingsPage) link.classList.add('active');
+    const divider = menu.querySelector('.menu-divider');
+    if (divider) menu.insertBefore(link, divider);
+    else menu.appendChild(link);
   }
 
   document.querySelectorAll('.logout').forEach((btn) => {

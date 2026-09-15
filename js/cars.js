@@ -156,7 +156,54 @@ export const cars = [
   }
 ];
 
+const API = 'http://localhost:3000';
+
+function mapDbCar(car) {
+  const mileage = String(car.mileage || '');
+  return {
+    id: 'db-' + car.id,
+    title: car.title,
+    price: '$' + Number(car.price).toLocaleString(),
+    location: car.location,
+    image: car.image,
+    condition: car.condition,
+    description: car.description,
+    specs: [
+      { label: 'Make', value: car.make },
+      { label: 'Model', value: car.model },
+      { label: 'Year', value: String(car.year) },
+      { label: 'Mileage', value: mileage + ' mi' },
+      { label: 'Transmission', value: car.transmission },
+      { label: 'Fuel Type', value: car.fuel },
+    ],
+    images: [car.image],
+    seller: {
+      name: car.sellerName,
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150',
+      memberSince: '2026',
+      email: car.sellerEmail,
+      phone: car.sellerPhone,
+    },
+  };
+}
+
+export async function getDbCars() {
+  try {
+    const res = await fetch(API + '/cars');
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.map(mapDbCar);
+  } catch (e) {
+    return [];
+  }
+}
+
 export function getAllCars() {
   const posted = JSON.parse(localStorage.getItem('postedCars') || '[]');
   return [...posted, ...cars];
+}
+
+export async function getAllCarsAsync() {
+  const dbCars = await getDbCars();
+  return [...dbCars, ...cars];
 }

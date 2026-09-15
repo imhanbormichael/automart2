@@ -1,4 +1,4 @@
-import { getAllCars } from './cars.js';
+import { getAllCarsAsync } from './cars.js';
 
 const carsGrid = document.getElementById('cars-grid');
 const vehicleCount = document.getElementById('vehicle-count');
@@ -14,8 +14,10 @@ const filterFuel = document.getElementById('filter-fuel');
 const clearFiltersBtn = document.getElementById('clear-filters');
 const clearAllBtn = document.getElementById('clear-all-btn');
 
+let allCars = [];
+
 function getPrice(priceStr) {
-  return parseInt(priceStr.replace(/[^0-9]/g, '')) || 0;
+  return parseInt(String(priceStr).replace(/[^0-9]/g, '')) || 0;
 }
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -31,20 +33,19 @@ if (urlParams.get('max') && filterMaxPrice) {
 }
 
 function filterCars() {
-  const make = filterMake.value;
-  const year = filterYear.value;
-  const minPrice = filterMinPrice.value ? parseInt(filterMinPrice.value) : 0;
-  const maxPrice = filterMaxPrice.value ? parseInt(filterMaxPrice.value) : Infinity;
-  const transmission = filterTransmission.value;
-  const fuel = filterFuel.value;
+  const make = filterMake ? filterMake.value : '';
+  const year = filterYear ? filterYear.value : '';
+  const minPrice = filterMinPrice && filterMinPrice.value ? parseInt(filterMinPrice.value) : 0;
+  const maxPrice = filterMaxPrice && filterMaxPrice.value ? parseInt(filterMaxPrice.value) : Infinity;
+  const transmission = filterTransmission ? filterTransmission.value : '';
+  const fuel = filterFuel ? filterFuel.value : '';
 
-  const allCars = getAllCars();
-  const filtered = allCars.filter(car => {
+  const filtered = allCars.filter((car) => {
     const carPrice = getPrice(car.price);
-    const carYear = car.specs.find(s => s.label === "Year")?.value || "";
-    const carTransmission = car.specs.find(s => s.label === "Transmission")?.value || "";
-    const carFuel = car.specs.find(s => s.label === "Fuel Type")?.value || "";
-    const carMake = car.specs.find(s => s.label === "Make")?.value || "";
+    const carYear = car.specs.find((s) => s.label === 'Year')?.value || '';
+    const carTransmission = car.specs.find((s) => s.label === 'Transmission')?.value || '';
+    const carFuel = car.specs.find((s) => s.label === 'Fuel Type')?.value || '';
+    const carMake = car.specs.find((s) => s.label === 'Make')?.value || '';
 
     if (make && carMake !== make) return false;
     if (year && carYear !== year) return false;
@@ -70,16 +71,16 @@ function renderCars(list) {
 
   noResults.style.display = 'none';
 
-  carsGrid.innerHTML = list.map(car => {
-    const year = car.specs.find(s => s.label === "Year")?.value || "";
-    const mileage = car.specs.find(s => s.label === "Mileage")?.value || "";
-    const fuel = car.specs.find(s => s.label === "Fuel Type")?.value || "";
-    const location = car.location.split(',')[0];
+  carsGrid.innerHTML = list.map((car) => {
+    const year = car.specs.find((s) => s.label === 'Year')?.value || '';
+    const mileage = car.specs.find((s) => s.label === 'Mileage')?.value || '';
+    const fuel = car.specs.find((s) => s.label === 'Fuel Type')?.value || '';
+    const location = (car.location || '').split(',')[0];
 
     return `
       <a href="car-details.html?id=${car.id}" class="car-card">
         <div class="car-image-container">
-          <span class="condition-badge ${car.condition.toLowerCase()}">${car.condition}</span>
+          <span class="condition-badge ${String(car.condition).toLowerCase()}">${car.condition}</span>
           <span class="price-badge">${car.price}</span>
           <img src="${car.image}" alt="${car.title}" class="car-image">
         </div>
@@ -126,21 +127,21 @@ function renderCars(list) {
 function updateActiveFilters() {
   const chips = [];
 
-  if (filterMake.value) chips.push({ key: 'make', label: `Make: ${filterMake.value}` });
-  if (filterYear.value) chips.push({ key: 'year', label: `Year: ${filterYear.value}` });
-  if (filterMinPrice.value) chips.push({ key: 'min', label: `Min: $${filterMinPrice.value}` });
-  if (filterMaxPrice.value) chips.push({ key: 'max', label: `Max: $${filterMaxPrice.value}` });
-  if (filterTransmission.value) chips.push({ key: 'transmission', label: filterTransmission.value });
-  if (filterFuel.value) chips.push({ key: 'fuel', label: filterFuel.value });
+  if (filterMake && filterMake.value) chips.push({ key: 'make', label: `Make: ${filterMake.value}` });
+  if (filterYear && filterYear.value) chips.push({ key: 'year', label: `Year: ${filterYear.value}` });
+  if (filterMinPrice && filterMinPrice.value) chips.push({ key: 'min', label: `Min: $${filterMinPrice.value}` });
+  if (filterMaxPrice && filterMaxPrice.value) chips.push({ key: 'max', label: `Max: $${filterMaxPrice.value}` });
+  if (filterTransmission && filterTransmission.value) chips.push({ key: 'transmission', label: filterTransmission.value });
+  if (filterFuel && filterFuel.value) chips.push({ key: 'fuel', label: filterFuel.value });
 
-  activeFiltersContainer.innerHTML = chips.map(chip => `
+  activeFiltersContainer.innerHTML = chips.map((chip) => `
     <span class="filter-chip">
       ${chip.label}
       <button data-key="${chip.key}">×</button>
     </span>
   `).join('');
 
-  activeFiltersContainer.querySelectorAll('button').forEach(btn => {
+  activeFiltersContainer.querySelectorAll('button').forEach((btn) => {
     btn.addEventListener('click', () => {
       const key = btn.dataset.key;
       if (key === 'make') filterMake.value = '';
@@ -155,16 +156,16 @@ function updateActiveFilters() {
 }
 
 function clearAllFilters() {
-  filterMake.value = '';
-  filterYear.value = '';
-  filterMinPrice.value = '';
-  filterMaxPrice.value = '';
-  filterTransmission.value = '';
-  filterFuel.value = '';
+  if (filterMake) filterMake.value = '';
+  if (filterYear) filterYear.value = '';
+  if (filterMinPrice) filterMinPrice.value = '';
+  if (filterMaxPrice) filterMaxPrice.value = '';
+  if (filterTransmission) filterTransmission.value = '';
+  if (filterFuel) filterFuel.value = '';
   filterCars();
 }
 
-[filterMake, filterYear, filterTransmission, filterFuel].forEach(el => {
+[filterMake, filterYear, filterTransmission, filterFuel].forEach((el) => {
   if (el) el.addEventListener('change', filterCars);
 });
 
@@ -173,35 +174,40 @@ if (filterMaxPrice) filterMaxPrice.addEventListener('input', filterCars);
 if (clearFiltersBtn) clearFiltersBtn.addEventListener('click', clearAllFilters);
 if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllFilters);
 
-filterCars();
+async function loadCars() {
+  allCars = await getAllCarsAsync();
+  filterCars();
+}
 
-const openFiltersBtn = document.getElementById("open-filters");
-const closeFiltersBtn = document.getElementById("close-filters");
-const filtersSidebar = document.getElementById("filters-sidebar");
-const filtersOverlay = document.getElementById("filters-overlay");
+loadCars();
+
+const openFiltersBtn = document.getElementById('open-filters');
+const closeFiltersBtn = document.getElementById('close-filters');
+const filtersSidebar = document.getElementById('filters-sidebar');
+const filtersOverlay = document.getElementById('filters-overlay');
 
 function openMobileFilters() {
   if (!filtersSidebar) return;
-  filtersSidebar.classList.add("open");
-  if (filtersOverlay) filtersOverlay.classList.add("active");
-  document.body.style.overflow = "hidden";
+  filtersSidebar.classList.add('open');
+  if (filtersOverlay) filtersOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeMobileFilters() {
   if (!filtersSidebar) return;
-  filtersSidebar.classList.remove("open");
-  if (filtersOverlay) filtersOverlay.classList.remove("active");
-  document.body.style.overflow = "";
+  filtersSidebar.classList.remove('open');
+  if (filtersOverlay) filtersOverlay.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
 if (openFiltersBtn) {
-  openFiltersBtn.addEventListener("click", openMobileFilters);
+  openFiltersBtn.addEventListener('click', openMobileFilters);
 }
 
 if (closeFiltersBtn) {
-  closeFiltersBtn.addEventListener("click", closeMobileFilters);
+  closeFiltersBtn.addEventListener('click', closeMobileFilters);
 }
 
 if (filtersOverlay) {
-  filtersOverlay.addEventListener("click", closeMobileFilters);
+  filtersOverlay.addEventListener('click', closeMobileFilters);
 }

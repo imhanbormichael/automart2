@@ -15,3 +15,23 @@ model User {
   role      String   @default("user")
   createdAt DateTime @default(now())
 }
+
+model Car {
+  id           Int      @id @default(autoincrement())
+  title        String
+  make         String
+  model        String
+  year         Int
+  price        Int
+  mileage      String
+  fuel         String
+  transmission String
+  condition    String
+  location     String
+  description  String
+  image        String
+  sellerName   String
+  sellerPhone  String
+  sellerEmail  String
+  createdAt    DateTime @default(now())
+}
