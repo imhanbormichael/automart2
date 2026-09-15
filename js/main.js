@@ -72,6 +72,7 @@ if (toggle && menu) {
   }
 
   const isListingsPage = window.location.pathname.includes('my-listings.html');
+  const isAdminPage = window.location.pathname.includes('admin.html');
 
   const nav = document.querySelector('.nav-links');
   if (nav && !nav.querySelector('.listings-link')) {
@@ -92,6 +93,28 @@ if (toggle && menu) {
     const divider = menu.querySelector('.menu-divider');
     if (divider) menu.insertBefore(link, divider);
     else menu.appendChild(link);
+  }
+
+  if (user.role === 'admin') {
+    if (nav && !nav.querySelector('.admin-link')) {
+      const adminLink = document.createElement('a');
+      adminLink.href = 'admin.html';
+      adminLink.textContent = 'Admin';
+      adminLink.className = 'admin-link';
+      if (isAdminPage) adminLink.classList.add('active');
+      nav.appendChild(adminLink);
+    }
+
+    if (menu && !menu.querySelector('.admin-link')) {
+      const adminLink = document.createElement('a');
+      adminLink.href = 'admin.html';
+      adminLink.textContent = 'Admin';
+      adminLink.className = 'admin-link';
+      if (isAdminPage) adminLink.classList.add('active');
+      const divider = menu.querySelector('.menu-divider');
+      if (divider) menu.insertBefore(adminLink, divider);
+      else menu.appendChild(adminLink);
+    }
   }
 
   document.querySelectorAll('.logout').forEach((btn) => {

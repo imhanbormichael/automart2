@@ -1,3 +1,8 @@
+const loggedInUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+if (!loggedInUser || !loggedInUser.email) {
+  window.location.href = 'login.html';
+}
+
 const API = 'http://localhost:3000';
 const form = document.getElementById('post-car-form');
 const photoInput = document.getElementById('car-photos');

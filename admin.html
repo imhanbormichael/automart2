@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - AutoMart</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .admin-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 16px 60px;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .admin-table th, .admin-table td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .admin-table th {
+      background: #111827;
+      color: white;
+    }
+    .role-admin { color: #2563eb; font-weight: 700; }
+    .role-user { color: #6b7280; }
+
+    @media (max-width: 768px) {
+  .admin-wrap {
+    padding: 90px 12px 40px;
+  }
+
+  .admin-wrap h1 {
+    font-size: 1.6rem;
+  }
+
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-table th:nth-child(2),
+  .admin-table td:nth-child(2) {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <span>Auto<span class="blue">Mart</span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cars.html">Cars</a>
+        <a href="post-car.html">Post Car</a>
+      </nav>
+      <div class="auth">
+        <a class="login" href="login.html">Login</a>
+        <a class="signup" href="login.html">Sign Up</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">Cars</a>
+    <a href="post-car.html">Post Car</a>
+    <div class="menu-divider"></div>
+    <div class="mobile-auth">
+      <a class="login" href="login.html">Login</a>
+      <a class="signup" href="login.html">Sign Up</a>
+    </div>
+  </div>
+
+  <section class="admin-wrap">
+    <h1>Admin <span class="blue">Users</span></h1>
+    <p id="admin-status">Loading...</p>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="users-table"></tbody>
+    </table>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
